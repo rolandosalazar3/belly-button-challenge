@@ -94,7 +94,8 @@ function buildChart(sample) {
       // Log the data to the console
       console.log(otu_ids,otu_labels,sample_values);
 
-      // Variable for the top ten items to display in descending order
+      // Variable for the top ten items
+      //display in descending order
       let yticks = otu_ids.slice(0,10).map(id => `OTU ${id}`).reverse();
       let xticks = sample_values.slice(0,10).reverse();
       let labels = otu_labels.slice(0,10).reverse();
