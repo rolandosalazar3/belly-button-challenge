@@ -1,7 +1,7 @@
 // Use the D3 library to read in samples.json from the URL.
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
 
-// Fetch the JSON data and console log it
+// Fetch the JSON data and log in the console
 d3.json(url).then(function(data) {
   console.log(data);
 });
@@ -45,7 +45,7 @@ function buildMetadata(sample) {
   // D3 to retrieve the data
   d3.json(url).then((data) => {
 
-      // Retrieve metadata
+      // Retrieve metadata anmd create variable
       let metadata = data.metadata;
 
       // Filter based on the sample
@@ -62,7 +62,7 @@ function buildMetadata(sample) {
       // Add each key and value
       Object.entries(first_value).forEach(([key,data_value]) => {
 
-          // Log the individual keys and values
+          // Log the keys and values
           console.log(key,data_value);
 
           d3.select("#sample-metadata").append("h5").text(`${key}: ${data_value}`);
@@ -71,7 +71,7 @@ function buildMetadata(sample) {
 
 };
 
-// Chart function
+// Chart function that builds both the bar and bubble chart
 function buildChart(sample) {
 
   // D3 to retrieve the data
@@ -99,6 +99,7 @@ function buildChart(sample) {
       let xticks = sample_values.slice(0,10).reverse();
       let labels = otu_labels.slice(0,10).reverse();
       
+      //Bar Chart
       // Trace for the bar chart
       let trace1 = {
           x: xticks,
@@ -116,6 +117,7 @@ function buildChart(sample) {
       // Plot the bar chart
       Plotly.newPlot("bar", [trace1], layout)
 
+      //Bubble Chart
       // Trace for bubble chart
       let trace2 = {
         x: otu_ids,
